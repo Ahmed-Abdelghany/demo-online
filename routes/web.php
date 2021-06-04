@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ProductController@index')->name('home');
+Route::get('/products/{category}', 'ProductController@filterByCategory')->name('products-category');
+Route::get('/brand/{brand}', 'ProductController@filterByBrand')->name('products-brand');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
